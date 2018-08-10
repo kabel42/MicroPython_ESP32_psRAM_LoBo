@@ -101,6 +101,8 @@ MP_EXTRA_INC += -I$(ESPCOMP)/heap/include
 MP_EXTRA_INC += -I$(ESPCOMP)/openssl/include
 MP_EXTRA_INC += -I$(ESPCOMP)/app_update/include
 MP_EXTRA_INC += -I$(ESPCOMP)/mdns/include
+MP_EXTRA_INC += -I$(ESPCOMP)/libsodium/libsodium/src/libsodium/include
+MP_EXTRA_INC += -I$(ESPCOMP)/libsodium/port_include
 
 ifdef CONFIG_MICROPY_USE_BLUETOOTH
 MP_EXTRA_INC += -I$(ESPCOMP)/bt/include
