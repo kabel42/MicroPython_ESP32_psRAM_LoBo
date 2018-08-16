@@ -147,6 +147,7 @@ void mp_task(void *pvParameter)
     if (res == 0) {
     	// run boot-up script 'boot.py'
         pyexec_file("boot.py");
+        pyexec_frozen_module("main.py");
         if (pyexec_mode_kind == PYEXEC_MODE_FRIENDLY_REPL) {
         	// Check if 'main.py' exists and run it
         	FILE *fd;
