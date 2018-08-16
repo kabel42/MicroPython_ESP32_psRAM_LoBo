@@ -656,12 +656,16 @@ STATIC mp_obj_t mod_ota_start(mp_uint_t n_args, const mp_obj_t *pos_args,
   
   uint8_t sig[crypto_sign_PUBLICKEYBYTES] = {'\0'};
   uint8_t doSig = 0;
-  if (MP_OBJ_IS_STR_OR_BYTES(args[ARG_name].u_obj)) {
+  if (MP_OBJ_IS_STR_OR_BYTES(args[ARG_sig].u_obj)) {
     size_t len = 0;
     const char *s = mp_obj_str_get_data(args[ARG_sig].u_obj, &len);
     memcpy(sig, s, len);
     doSig = 1;
+  } else {
+    ESP_LOGW(TAG, "sig is no Bytes");
   }
+  
+  ESP_LOGI(TAG, "sig: %s, doSig: %d", sig, doSig);
   
   esp_err_t res = mpy_ota_update(server, sport, fname, doSig, sig,
                                  args[ARG_forceFact].u_bool);
